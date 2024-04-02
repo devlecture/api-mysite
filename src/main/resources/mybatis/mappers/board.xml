@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+	<select id="selectList" parameterType="map" resultType="com.javaex.vo.BoardVo">
+		<![CDATA[
+			SELECT  b.no,
+			        b.title,
+			        b.content,
+			        u.name,
+			        b.hit,
+			        date_format(b.reg_date,'%Y-%m-%d %H:%i:%s') regDate,
+			        u.no userNo
+			FROM board b, users u
+			WHERE  b.user_no = u.no	
+			order by no desc
+			limit #{startRowNo}, #{listCnt}
+		]]>
+	</select>
+
+
+
+
+
+	<!-- *************************************************************************** -->
+	<!-- 전체리스트가져오기 리스트(검색O,페이징O) -->
+	<select id="selectList2" parameterType="map" resultType="com.javaex.vo.BoardVo">
+		<![CDATA[
+			SELECT  b.no,
+			        b.title,
+			        b.content,
+			        u.name,
+			        b.hit,
+			        date_format(b.reg_date,'%Y-%m-%d %H:%i:%s') regDate,
+			        u.no userNo
+			FROM board b, users u
+			WHERE  b.user_no = u.no	
+		]]>
+		<if test="keyword != null">
+        <![CDATA[
+            AND ( b.title LIKE CONCAT('%', #{keyword}, '%') 
+            	  OR 
+                  b.content LIKE CONCAT('%', #{keyword}, '%') )
+        ]]>
+		</if>
+		<![CDATA[
+			order by no desc
+			limit #{startRowNo}, #{listCnt}
+		]]>
+	</select>
+
+
+	<!-- 전체 글갯수 -->
+	<select id="selectTotalCnt2" parameterType="string" resultType="int">
+		<![CDATA[
+			select count(*) count
+			from board
+			where 1=1
+		]]>
+		<if test="keyword != null">
+        <![CDATA[
+            AND ( title LIKE CONCAT('%', #{keyword}, '%') 
+            	  OR 
+                  content LIKE CONCAT('%', #{keyword}, '%') )
+        ]]>
+		</if>
+	</select>
+
+</mapper>
