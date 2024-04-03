@@ -1,9 +1,17 @@
 name: Deploy Phonebook App
 
 on:
-  push:
-    branches:
-      - master # 또는 프로젝트의 기본 브랜치명
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+
+#on:
+#  push:
+#    branches:
+#      - master # 또는 프로젝트의 기본 브랜치명
 
 jobs:
   build-and-deploy:
