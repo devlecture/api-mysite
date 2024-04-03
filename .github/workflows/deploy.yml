@@ -1,4 +1,4 @@
-name: Deploy Phonebook App
+name: Deploy mysite App
 
 on:
   workflow_dispatch:
