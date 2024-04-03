@@ -1,6 +1,7 @@
 package com.javaex.service;
 
 import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -15,10 +16,29 @@ import com.javaex.vo.AttachVo;
 public class AttachService {
 
 	public String exeUpload(MultipartFile file) {
-		System.out.println("AttachService.exeUpload()");
-
-		// 파일저장디렉토리
-		String saveDir = "C:\\devStudy\\upload";
+		
+        // 운영 체제 이름 확인
+        String osName = System.getProperty("os.name").toLowerCase();
+        String saveDir;
+        
+        // 운영 체제에 따라 다른 경로 설정
+        if (osName.contains("linux")) {
+        	System.out.println("리눅스");
+        	// 파일저장디렉토리
+        	saveDir = "/home/ec2-user/upload"; // Linux 경로. username을 실제 사용자 이름으로 변경하세요.
+        	File directory = new File(saveDir);
+        	if (!directory.exists()) {
+                directory.mkdirs(); // 디렉토리 생성
+            }
+        } else {
+        	System.out.println("윈도우");
+        	// 파일저장디렉토리
+        	saveDir = "C:\\devStudy\\upload";
+        	File directory = new File(saveDir);
+        	if (!directory.exists()) {
+                directory.mkdirs(); // 디렉토리 생성
+            }
+        }
 
 		// (1)파일관련 정보 추출///////////////////////////////////////////////////
 

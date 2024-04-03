@@ -19,7 +19,7 @@ public class BoardDao {
 		System.out.println("BoardDao.boardSelectList()");
 
 		List<BoardVo> boardList = sqlSession.selectList("board.selectList", limitMap);
-
+		System.out.println(boardList);
 		return boardList;
 
 	}
