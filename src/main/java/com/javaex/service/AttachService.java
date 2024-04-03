@@ -59,7 +59,7 @@ public class AttachService {
 		System.out.println(fileSize);
 
 		// 파일전체경로
-		String filePath = saveDir + "\\" + saveName;
+		String filePath = saveDir + File.separator + saveName;
 		System.out.println(filePath);
 
 		// vo로묶기
