@@ -25,19 +25,11 @@ public class AttachService {
         if (osName.contains("linux")) {
         	System.out.println("리눅스");
         	// 파일저장디렉토리
-        	saveDir = "/home/ec2-user/upload"; // Linux 경로. username을 실제 사용자 이름으로 변경하세요.
-        	File directory = new File(saveDir);
-        	if (!directory.exists()) {
-                directory.mkdirs(); // 디렉토리 생성
-            }
+        	saveDir = "/app/upload"; // Linux 경로. username을 실제 사용자 이름으로 변경하세요.
         } else {
         	System.out.println("윈도우");
         	// 파일저장디렉토리
         	saveDir = "C:\\devStudy\\upload";
-        	File directory = new File(saveDir);
-        	if (!directory.exists()) {
-                directory.mkdirs(); // 디렉토리 생성
-            }
         }
         
 

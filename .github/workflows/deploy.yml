@@ -46,4 +46,8 @@ jobs:
             sudo docker pull iremys/mysite:latest
             sudo docker stop mysite || true
             sudo docker rm mysite || true
-            sudo docker run -d --name mysite -p 9000:9000 iremys/mysite:latest
+            sudo docker run -d \ 
+              --name mysite 
+              -p 9000:9000 \
+              -v /home/ec2-user/upload:/app/upload \
+              iremys/mysite:latest
