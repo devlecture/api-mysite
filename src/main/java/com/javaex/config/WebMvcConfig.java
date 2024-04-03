@@ -19,6 +19,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				.allowCredentials(true); // 쿠키허용
 	}
 
+	
+	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		
