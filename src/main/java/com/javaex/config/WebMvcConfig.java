@@ -28,12 +28,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		if (osName.contains("linux")) {
         	System.out.println("리눅스");
         	// 파일저장디렉토리
-        	saveDir = "/home/ec2-user/upload"; // Linux 경로. username을 실제 사용자 이름으로 변경하세요.
+        	saveDir = "/home/ec2-user/upload/"; // Linux 경로. username을 실제 사용자 이름으로 변경하세요.
         
 		} else {
         	System.out.println("윈도우");
         	// 파일저장디렉토리
-        	saveDir = "C:\\devStudy\\upload";
+        	saveDir = "C:\\devStudy\\upload\\";
         }
 		
 		registry.addResourceHandler("/upload/**")
