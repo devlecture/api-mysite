@@ -21,7 +21,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		
 		String saveDir;
+		
+		String osName = System.getProperty("os.name").toLowerCase();
 		if (osName.contains("linux")) {
         	System.out.println("리눅스");
         	// 파일저장디렉토리
